@@ -6,7 +6,7 @@ require_once 'Database_Operation.php';
 $response = array();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	if (!verifyRequiredParams(array('Username', 'Password', 'Email', 'FirstName', 'LastName', 'Zip_Code', 'Weight', 'Age', 'Gender', 'Years_With_Diabetes', 'Diabetes_Type', 'On_Insulin', 'Subscription', 'Current_GC_Bottles', 'On_Oral_Medication', 'Daily_Injections', 'Avg_Daily_Units_of_Insulin', 'Activity_Level', 'Join_GC_Chat_Group'))) 
+	if (!verifyRequiredParams(array('Username', 'Password', 'Email', 'FirstName', 'LastName', 'Zip_Code', 'Weight', 'Age', 'Gender', 'Years_With_Diabetes', 'Diabetes_Type', 'On_Insulin', 'Subscription', 'Current_GC_Bottles', 'On_Oral_Medication', 'Oral_Medication_Name', 'Daily_Injections', 'Avg_Daily_Units_of_Insulin', 'Activity_Level', 'Join_GC_Chat_Group'))) 
 	{
         	//getting values
         	$username = $_POST['Username'];
@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$subscription = $_POST['Subscription'];
 		$current_gc_bottles = $_POST['Current_GC_Bottles'];
 		$on_oral_meds = $_POST['On_Oral_Medication'];
+		$oral_meds_name = $_POST['Oral_Medication_Name'];
 		$daily_injections = $_POST['Daily_Injections'];
 		$avg_daily_units_of_insulin = $_POST['Avg_Daily_Units_of_Insulin'];
 		$activity_level = $_POST['Activity_Level'];
@@ -34,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         	$db = new DbOperation();
 
         	//attempting to add user to database
-        	$result = $db->createUser($username, $password, $email, $firstname, $lastname, $zip, $weight, $age, $gender, $years_with_diabetes, $diabetes_type, $on_insulin, $subscription, $current_gc_bottles, $on_oral_meds, $daily_injections, $avg_daily_units_of_insulin, $activity_level, $join_gc_chat_group);
+        	$result = $db->createUser($username, $password, $email, $firstname, $lastname, $zip, $weight, $age, $gender, $years_with_diabetes, $diabetes_type, $on_insulin, $subscription, $current_gc_bottles, $on_oral_meds, $oral_meds_name, $daily_injections, $avg_daily_units_of_insulin, $activity_level, $join_gc_chat_group);
 
         	//making the response accordingly
         	if ($result == USER_CREATED) 
