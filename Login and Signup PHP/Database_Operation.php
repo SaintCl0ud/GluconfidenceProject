@@ -60,15 +60,15 @@ class DbOperation
     	}
 
     	//Function to create a new user
-    	public function createUser($username, $pass, $email, $firstname, $lastname, $zipcode, $weight, $age, $gender, $years_with_diabetes, $diabetes_type, $on_insulin, $subscription, $current_gc_bottles, $on_oral_med, $daily_injections_num, $avg_daily_insulin, $activity_level, $join_gc_chat_group)
+    	public function createUser($username, $pass, $email, $firstname, $lastname, $zipcode, $weight, $age, $gender, $years_with_diabetes, $diabetes_type, $on_insulin, $subscription, $current_gc_bottles, $on_oral_med, $oral_meds_name, $daily_injections_num, $avg_daily_insulin, $activity_level, $join_gc_chat_group)
     	{
 		//If there is no user in database with this username or email, then create one
         	if (!$this->isUserExist($username, $email)) 
 		{
 			//hashing password
       			$password = password_hash($pass, PASSWORD_DEFAULT);
-            		$stmt = $this->conn->prepare("INSERT INTO UserAccount (Username, Password, Email, FirstName, LastName, Zip_Code, Weight, Age, Gender, Years_With_Diabetes, Diabetes_Type, On_Insulin, Subscription, Current_GC_Bottles, On_Oral_Medication, Daily_Injections, Avg_Daily_Units_of_Insulin, Activity_Level, Join_GC_Chat_Group) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            		$stmt->bind_param("sssssssssssssssssss", $username, $password, $email, $firstname, $lastname, $zipcode, $weight, $age, $gender, $years_with_diabetes, $diabetes_type, $on_insulin, $subscription, $current_gc_bottles, $on_oral_med, $daily_injections_num, $avg_daily_insulin, $activity_level, $join_gc_chat_group);
+            		$stmt = $this->conn->prepare("INSERT INTO UserAccount (Username, Password, Email, FirstName, LastName, Zip_Code, Weight, Age, Gender, Years_With_Diabetes, Diabetes_Type, On_Insulin, Subscription, Current_GC_Bottles, On_Oral_Medication, Oral_Medication_Name, Daily_Injections, Avg_Daily_Units_of_Insulin, Activity_Level, Join_GC_Chat_Group) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            		$stmt->bind_param("ssssssssssssssssssss", $username, $password, $email, $firstname, $lastname, $zipcode, $weight, $age, $gender, $years_with_diabetes, $diabetes_type, $on_insulin, $subscription, $current_gc_bottles, $on_oral_med, $oral_meds_name, $daily_injections_num, $avg_daily_insulin, $activity_level, $join_gc_chat_group);
             		
 			if ($stmt->execute()) 
 			{
