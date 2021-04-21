@@ -1,0 +1,1 @@
+<a href="https://api.dexcom.com/v2/oauth2/login?client_id=QzBgYS5DLGWCvnS5M3lXNoYoBVvPUVHJ&amp;redirect_uri=http://localhost/callback.php&amp;response_type=code&amp;scope=offline_access">Authorize App</a>
